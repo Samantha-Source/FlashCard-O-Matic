@@ -7,16 +7,17 @@ import { readDeck } from "../utils/api";
 
 export default function Study(params){
     const [cards, setCards] = useState([]);
+    const [deckName, setDeckName] = useState("")
     
-    const deckId = useParams();
-    const ID = deckId.deckId
+    const {deckId} = useParams();
     
-    console.log(`This is the ID ${ID}`)
+
 
     useEffect(()=>{
         async function allCards(){
-            const response = await readDeck(`${ID}`);
+            const response = await readDeck(`${deckId}`);
             setCards(response.cards)
+            setDeckName(response.name)
         }
         allCards()
     }, [])
@@ -33,7 +34,7 @@ export default function Study(params){
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><Link to="/">Home</Link></li>
-                <li class="breadcrumb-item"><Link to="/">INSERT TOPIC HERE</Link></li>
+                <li class="breadcrumb-item"><Link to={`/decks/${deckId}`}>{deckName}</Link></li>
                 <li class="breadcrumb-item active" aria-current="page">Study</li>
             </ol>
         </nav>

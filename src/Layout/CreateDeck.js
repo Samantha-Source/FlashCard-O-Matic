@@ -2,12 +2,14 @@ import React from "react";
 import { useState } from "react";
 import {BrowserRouter as Router, Route, Swtich, Link, NavLink} from "react-router-dom";
 import { createDeck } from "../utils/api";
+import { useHistory } from "react-router-dom";
 
 
 export default function CreateDeck () {
     const [text, setText] = useState("")
     const [name, setName] = useState("");
     const [description, setDescription] = useState("")
+    const history = useHistory()
 
 const handleNameChange = (event) => setName(event.target.value)
 const handleDescriptionChange = (event) => setDescription(event.target.value)
@@ -15,6 +17,9 @@ const handleDescriptionChange = (event) => setDescription(event.target.value)
 const HandleSubmit = (event) => {
     event.preventDefault();
     console.log(event)
+    const deck = {name, description}
+    createDeck(deck)
+
 }
 
     return(
