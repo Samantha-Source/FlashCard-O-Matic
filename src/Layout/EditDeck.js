@@ -7,11 +7,10 @@ import { useEffect } from "react";
 
 export default function EditDeck(){
     const {deckId} = useParams();
-    // const [deckName, setDeckName] = useState("");
     const [name, setName] = useState("");
     const [description, setDescription] = useState("")
 
-    //Change handlers for input fields
+    // Change handlers for input fields
     const handleNameChange = (event) => setName(event.target.value);
     const handleDescriptionChange = (event) => setDescription(event.target.value);
     
@@ -22,36 +21,22 @@ export default function EditDeck(){
         const response = await readDeck(deckId);
         setName(response.name);
         setDescription(response.description)
-        // setDeckName(response.name)
     }
     loadDeck()
     }, [])
 
+    // Submit Handler
     const HandleSubmit = (event) => {
         event.preventDefault();
         const id = deckId
         const updatedDeck = {id, name, description}
         async function callUpdateDeck(){
             const response = await updateDeck(updatedDeck);
-            // setDeckName(response.name);
             setDescription(response.description)
             setName(response.name)
         }
         callUpdateDeck()
     }
-
-
-    // export async function updateDeck(updatedDeck, signal) {
-    //     const url = `${API_BASE_URL}/decks/${updatedDeck.id}?_embed=cards`;
-    //     const options = {
-    //       method: "PUT",
-    //       headers,
-    //       body: JSON.stringify(stripCards(updatedDeck)),
-    //       signal,
-    //     };
-    //     return await fetchJson(url, options, updatedDeck);
-    //   }
-
 
 
 
