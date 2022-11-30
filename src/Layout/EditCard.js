@@ -17,11 +17,11 @@ export default function EditCard(){
     const [deckName, setDeckName] = useState("")
     const [importedCardId, setImportedCardId] = useState()
    
-    // const [cardId, setCardId] = useState()
 
     const handleFrontChange = (event) => setFront(event.target.value);
     const handleBackChange = (event) => setBack(event.target.value);
 
+    
     useEffect(() => {
         async function loadDeck(){
         const response = await readDeck(deckId);
@@ -45,7 +45,6 @@ export default function EditCard(){
         const id = +cardId
         deckId = Number(deckId)
         const updatedCard = {id, front, back, deckId}
-        console.log(updatedCard)
         event.preventDefault()
         async function callUpdateCard(){
             try{
@@ -54,7 +53,6 @@ export default function EditCard(){
             setBack(response.back)
             setImportedCardId(response.cardId)
             history.push(`/decks/${deckId}`)
-            // window.location.reload(false);
         }
         catch(error) {
             throw error
@@ -64,16 +62,6 @@ export default function EditCard(){
 }
 
 
-
-    // export async function updateCard(updatedCard, signal) {
-    //     const url = `${API_BASE_URL}/cards/${updatedCard.id}`;
-    //     const options = {
-    //       method: "PUT",
-    //       headers,
-    //       body: JSON.stringify(updatedCard),
-    //     };
-    //     return await fetchJson(url, options, updatedCard);
-    //   }
 
 return(
     <React.Fragment>
