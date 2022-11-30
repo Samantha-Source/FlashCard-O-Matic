@@ -19,7 +19,6 @@ const HandleSubmit = (event) => {
     console.log(event)
     const deck = {name, description}
     createDeck(deck)
-
 }
 
     return(

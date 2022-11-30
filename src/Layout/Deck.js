@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { deleteDeck, readDeck } from "../utils/api";
 import DeleteDeckHandler from "./DeleteDeckHandler";
+import { listDecks } from "../utils/api";
 
 
 
@@ -10,10 +11,10 @@ export default function Deck(params){
     const [cards, setCards] = useState([]); 
     const [deckName, setDeckName] = useState("")
     const [deckDescription, setDeckDescription] = useState("")
+ 
     
     const {deckId} = useParams();
-    // const ID = deckId.deckId
-//    console.log(cards)
+
     
 
     useEffect(()=>{
@@ -26,7 +27,10 @@ export default function Deck(params){
         }
         allCards()
     }, [])
+
+
     
+
 console.log(cards)
     //SET THE CARD VIEWS FOR THE PAGE DOWN HERE (IT DOESNT DO THAT RIGHT NOW)
     const theCards = cards.map(({front, back, id}, index )=>(
@@ -45,7 +49,10 @@ console.log(cards)
                 </Link>
                 {" "}
                 {/* <Link to="/"> */}
-                <button type="button" class="btn btn-danger float-right" onClick={() => DeleteDeckHandler(deckId)}>
+                <button type="button"
+                 class="btn btn-danger float-right" 
+                //  onClick={DeleteDeckHandler({deckId})}
+                 >
             <span className="oi oi-trash"></span>
             {" "} Delete
             </button>
@@ -90,8 +97,12 @@ console.log(cards)
                 </button>
                 </Link>
                 {" "}
-                <Link to="/decks/new">
-                <button type="button" className="btn btn-danger float-right">
+                <Link to="/">
+                <button 
+                type="button" 
+                className="btn btn-danger float-right" 
+                
+                >
                 Delete(Right now goes to new)</button>
                 </Link>
 
