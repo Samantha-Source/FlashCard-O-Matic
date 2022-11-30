@@ -81,12 +81,13 @@ const handleBackChange = (event) => setBack(event.target.value)
 
 
         <h4>{`${deckName}: Add Card`}</h4>
-        <p>Add Card Page</p>
         <form onSubmit={HandleSubmit}>
+            <div className="form-group">
             <label htmlFor="front">
                 Front
                 <br></br>
                 <textarea 
+                className="form-control"
                 id="front" 
                 name="front" 
                 placeholder="Front side of card"
@@ -94,13 +95,14 @@ const handleBackChange = (event) => setBack(event.target.value)
                 onChange={handleFrontChange}
                  />
             </label>
+            </div>
 
-            <br></br>
-
+            <div>
             <label htmlFor="back">
                 Back
                 <br></br>
                 <textarea
+                className="form-control"
                  id="back" 
                  name="back" 
                  placeholder="Back side of the card" 
@@ -117,7 +119,7 @@ const handleBackChange = (event) => setBack(event.target.value)
             {" "}
 
             <button type="submit" className="btn btn-primary">Save</button>
-        
+            </div>
         </form>
         </React.Fragment>
     )
