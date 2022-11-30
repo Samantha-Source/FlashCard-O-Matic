@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { deleteDeck, readDeck } from "../utils/api";
+import { deleteCard, deleteDeck, readDeck } from "../utils/api";
 import { listDecks } from "../utils/api";
 import { useHistory } from "react-router-dom";
 
@@ -36,13 +36,17 @@ export default function Deck(params){
         }
     }
 
-    
+    const DeleteCardHandler = (id) => {
+        if(window.confirm("Delete this card? \n \n You will not be able to recover it.")) {
+            deleteCard(id)
+            window.location.reload(false);
+        }
+    }
 
-// console.log(cards)
 
 
     //SET THE CARD VIEWS FOR THE PAGE DOWN HERE (IT DOESNT DO THAT RIGHT NOW)
-    const theCards = cards.map(({front, back, id}, index )=>(
+    const theCards = cards.map(({front, back, id, deckId}, index )=>(
         <section key={index} className="border rounded p-2">
             <div className="d-flex flex-row justify-content-between">
             <p>{front}</p>
@@ -63,7 +67,7 @@ export default function Deck(params){
                 {/* <Link to="/"> */}
                 <button type="button"
                  className="btn btn-danger float-right" 
-                
+                onClick={() => {DeleteCardHandler(id)}}
                  >
             <span className="oi oi-trash"></span>
             {" "} Delete
