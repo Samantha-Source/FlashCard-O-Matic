@@ -6,7 +6,6 @@ import { useHistory } from "react-router-dom";
 
 
 export default function CreateDeck () {
-    const [text, setText] = useState("")
     const [name, setName] = useState("");
     const [description, setDescription] = useState("")
     const history = useHistory()
@@ -18,8 +17,22 @@ const HandleSubmit = (event) => {
     event.preventDefault();
     console.log(event)
     const deck = {name, description}
-    createDeck(deck)
+    
+    async function callCreateDeck(){
+        try{
+            const deckInfo = await createDeck(deck);
+            history.push(`/decks/${deckInfo.id}`)
+        }
+        catch (error) {
+            throw error
+        }
+    } 
+    callCreateDeck()
 }
+
+
+
+
 
     return(
         <React.Fragment>
