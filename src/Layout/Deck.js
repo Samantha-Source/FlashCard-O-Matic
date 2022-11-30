@@ -44,11 +44,14 @@ export default function Deck(params){
     //SET THE CARD VIEWS FOR THE PAGE DOWN HERE (IT DOESNT DO THAT RIGHT NOW)
     const theCards = cards.map(({front, back, id}, index )=>(
         <section key={index} className="border rounded p-2">
-            <p>Front: {front}</p>
-            <p>Back: {back}</p>
-            <p>id: {id}</p>
+            <div className="d-flex flex-row justify-content-between">
+            <p>{front}</p>
+            <p>{back}</p>
+            </div>
+            {/* <p>id: {id}</p>
             <p>deckId: {deckId}</p>
             <p>deck Name:</p>
+            */}
 
             <Link to={`/decks/${deckId}/cards/${id}/edit`}>
                 <button type="button" className="btn btn-secondary">
@@ -115,10 +118,6 @@ export default function Deck(params){
                 ><span className = "oi oi-trash"></span>
                 Delete</button>
                 
-
-        
-
-
 
             </section>
             <br></br>
