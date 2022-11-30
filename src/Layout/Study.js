@@ -8,7 +8,10 @@ import { useHistory } from "react-router-dom";
 
 export default function Study(params){
     const [cards, setCards] = useState([]);
-    const [deckName, setDeckName] = useState("")
+    const [deckName, setDeckName] = useState("");
+    const [front, setFront] = useState(true);
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const [display, setDisplay] = useState();
     
     const {deckId} = useParams();
     const history = useHistory();
@@ -24,14 +27,25 @@ export default function Study(params){
         allCards()
     }, [])
     
+
+
     //Map the cards
-    const theCards = cards.map((card, index )=>(
-        <section key={index} className="border rounded">
-            <p>Card {index+1} of {cards.length}</p>
-            <p>Front: {card.front}</p>
-            <p>Back: {card.back}</p>
-        </section>
+    // const theCards = cards.map((card, index )=>(
+    //     <section key={index} className="border rounded">
+    //         <h5>Card {index+1} of {cards.length}</h5>
+    //         <p>Index: {index}</p>
+    //         <p>Front: {card.front}</p>
+    //         <p>Back: {card.back}</p>
+    //         <button type="button" className="btn btn-secondary">Flip</button> {" "}
+    //         <button type="button" className="btn btn-primary">Next</button>
+    //     </section>
+    // ))
+
+    //OR MAP THEM LIKE THIS?
+    const eachCard = cards.map((card, index) =>(
+        {"index":index, "front":card.front, "back":card.back }
     ))
+
 
     //Show this if less than 3 cards
     if(cards.length < 3){
@@ -60,6 +74,7 @@ export default function Study(params){
     
 
 
+ 
 
     
     return(
@@ -72,12 +87,16 @@ export default function Study(params){
                 <li className="breadcrumb-item active" aria-current="page">Study</li>
             </ol>
         </nav>
-        <h3>Study: {deckName}</h3>
+        <h3>{deckName}: Study</h3>
 
+
+        <div>
+            {display}
+        </div>
         {/* THE CARDS  */}
-        <ul>
+        {/* <ul>
             {theCards}
-        </ul>
+        </ul> */}
 
         </React.Fragment>
     )
