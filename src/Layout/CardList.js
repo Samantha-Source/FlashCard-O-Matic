@@ -2,7 +2,7 @@ import React from "react"
 import { listDecks } from "../utils/api"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
-import DeleteDeckHandler from "./DeleteDeckHandler";
+import { deleteDeck } from "../utils/api";
 
 
 export default function CardList(){
@@ -18,17 +18,24 @@ export default function CardList(){
     }, [])
 
 
+    const DeleteDeckHandler = (id) => {          
+        if(window.confirm("Delete this deck? \n \nYou will not be able to recover it.")) {
+            deleteDeck(id);
+            window.location.reload(false);         
+        }
+    }
+
 
 
     let listing = deckList.map(({name, description, cards, id}, index) => (
-        <div class="border rounded m-2 p-2" key={index}>
-            <p class="float-right text-muted">{cards.length} cards</p>
-            <h3 class="card-title">{name}</h3>
+        <div className="border rounded m-2 p-2" key={index}>
+            <p className="float-right text-muted">{cards.length} cards</p>
+            <h3 className="card-title">{name}</h3>
             <p>{description}</p>
 
             
             <Link to={`/decks/${id}`}>
-            <button type="button" class="btn btn-secondary">  
+            <button type="button" className="btn btn-secondary">  
             <span className="oi oi-eye"></span> 
             {" "} View 
             </button>
@@ -37,7 +44,7 @@ export default function CardList(){
             {" "}
             
             <Link to={`/decks/${id}/study`}>
-            <button type="button" class="btn btn-primary">
+            <button type="button" className="btn btn-primary">
             <span className="oi oi-book"></span>
             {" "} Study
             </button>
@@ -47,8 +54,8 @@ export default function CardList(){
 
             <button 
             type="button"
-             class="btn btn-danger float-right"
-            //    onClick={() => {DeleteDeckHandler(id)}} 
+             className="btn btn-danger float-right"
+            onClick={() => {DeleteDeckHandler(id)}} 
               >
             <span className="oi oi-trash"></span>
             {" "} Delete

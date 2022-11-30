@@ -37,9 +37,9 @@ const HandleSubmit = (event) => {
     return(
         <React.Fragment>
         <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><Link to="/">Home</Link></li>
-            <li class="breadcrumb-item active" aria-current="page">Create Deck</li>
+        <ol className="breadcrumb">
+            <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+            <li className="breadcrumb-item active" aria-current="page">Create Deck</li>
         </ol>
         </nav>
 
@@ -74,7 +74,7 @@ const HandleSubmit = (event) => {
 
             <br></br>
 
-            <Link to="/"><button type="button" class="btn btn-secondary">
+            <Link to="/"><button type="button" className="btn btn-secondary">
                 Cancel</button></Link>
             
             {" "}
