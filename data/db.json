@@ -12,8 +12,8 @@
     },
     {
       "id": 3,
-      "name": "New1dd",
-      "description": "newD1"
+      "name": "Test1",
+      "description": "TEst1"
     },
     {
       "name": "test2",
@@ -159,9 +159,21 @@
     },
     {
       "id": 27,
-      "front": "cardEDITE",
-      "back": "cardERDITE",
+      "front": "cardEDITED",
+      "back": "cardERDITED",
       "deckId": 3
+    },
+    {
+      "front": "card2",
+      "back": "card2",
+      "deckId": 3,
+      "id": 28
+    },
+    {
+      "front": "front3",
+      "back": "back3",
+      "deckId": 3,
+      "id": 29
     }
   ]
 }
