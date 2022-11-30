@@ -16,39 +16,9 @@
       "id": 3
     },
     {
-      "name": "3",
-      "description": "333",
+      "name": "test2",
+      "description": "222",
       "id": 4
-    },
-    {
-      "name": "d",
-      "description": "ddd",
-      "id": 5
-    },
-    {
-      "name": "d",
-      "description": "ddd",
-      "id": 6
-    },
-    {
-      "name": "d",
-      "description": "ddd",
-      "id": 7
-    },
-    {
-      "name": "d",
-      "description": "ddd",
-      "id": 8
-    },
-    {
-      "name": "e",
-      "description": "eee",
-      "id": 9
-    },
-    {
-      "name": "e",
-      "description": "eee",
-      "id": 10
     }
   ],
   "cards": [
@@ -81,6 +51,12 @@
       "back": "Renders the first matching child <Route> ",
       "deckId": 2,
       "id": 5
+    },
+    {
+      "front": "front2",
+      "back": "back2",
+      "deckId": 4,
+      "id": 6
     }
   ]
 }

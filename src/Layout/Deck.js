@@ -45,7 +45,7 @@ export default function Deck(params){
 
 
 
-    //SET THE CARD VIEWS FOR THE PAGE DOWN HERE (IT DOESNT DO THAT RIGHT NOW)
+    //SET THE CARD VIEWS FOR THE PAGE
     const theCards = cards.map(({front, back, id, deckId}, index )=>(
         <section key={index} className="border rounded p-2">
             <div className="d-flex flex-row justify-content-between">
