@@ -12,9 +12,14 @@ export default function Study(params){
     const [front, setFront] = useState(true);
     const [currentIndex, setCurrentIndex] = useState(0)
     const [display, setDisplay] = useState();
+    // const [cardId, setCardId] = useState()
     
     const {deckId} = useParams();
     const history = useHistory();
+    const {cardId} = useParams();
+
+    console.log(`DECK ID ${deckId}`)
+    console.log(`CARD ID? ${cardId}`)
     
 
     // Read Deck
@@ -30,21 +35,25 @@ export default function Study(params){
 
 
     //Map the cards
-    // const theCards = cards.map((card, index )=>(
-    //     <section key={index} className="border rounded">
-    //         <h5>Card {index+1} of {cards.length}</h5>
-    //         <p>Index: {index}</p>
-    //         <p>Front: {card.front}</p>
-    //         <p>Back: {card.back}</p>
-    //         <button type="button" className="btn btn-secondary">Flip</button> {" "}
-    //         <button type="button" className="btn btn-primary">Next</button>
-    //     </section>
-    // ))
+    const theCards = cards.map((card, index )=>(
+        <section key={index} className="border rounded">
+            <h5>Card {index+1} of {cards.length}</h5>
+            <p>Index: {index}</p>
+            <p>Front: {card.front}</p>
+            <p>Back: {card.back}</p>
+            <button type="button" className="btn btn-secondary">Flip</button> {" "}
+            <button type="button" className="btn btn-primary">Next</button>
+        </section>
+    ))
 
     //OR MAP THEM LIKE THIS?
     const eachCard = cards.map((card, index) =>(
         {"index":index, "front":card.front, "back":card.back }
     ))
+
+
+
+
 
 
     //Show this if less than 3 cards
