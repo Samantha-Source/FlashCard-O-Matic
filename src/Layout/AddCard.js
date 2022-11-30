@@ -56,6 +56,7 @@ const handleBackChange = (event) => setBack(event.target.value)
     return(
 
         <React.Fragment>
+            {/* BREADCRUMB NAV BAR */}
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><Link to="/">Home</Link></li>
@@ -66,6 +67,8 @@ const handleBackChange = (event) => setBack(event.target.value)
 
 
         <h4>{`${deckName}: Add Card`}</h4>
+       
+        {/* THE FORM */}
         <form onSubmit={HandleSubmit}>
             <div className="form-group">
             <label htmlFor="front">

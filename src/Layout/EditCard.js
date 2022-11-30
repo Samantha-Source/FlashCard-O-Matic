@@ -17,11 +17,11 @@ export default function EditCard(){
     const [deckName, setDeckName] = useState("")
     const [importedCardId, setImportedCardId] = useState()
    
-
+    //change handlers for input fields
     const handleFrontChange = (event) => setFront(event.target.value);
     const handleBackChange = (event) => setBack(event.target.value);
 
-    
+    //load the current deck
     useEffect(() => {
         async function loadDeck(){
         const response = await readDeck(deckId);
@@ -30,6 +30,7 @@ export default function EditCard(){
     loadDeck()
     }, [])
 
+    //load the current card data
     useEffect(()=>{
         async function loadCard(){
             const response = await readCard(cardId);
@@ -65,6 +66,7 @@ export default function EditCard(){
 
 return(
     <React.Fragment>
+        {/* BREADCRUMB NAV BAR */}
     <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
             <li className="breadcrumb-item"><Link to="/">Home</Link></li>
@@ -74,7 +76,7 @@ return(
     </nav>
 
 
-<h4>{`${deckName}: Add Card`}</h4>
+<h4>{`Edit Card`}</h4>
 <form onSubmit={HandleSubmit}>
     <div className="form-group">
     <label htmlFor="front">
