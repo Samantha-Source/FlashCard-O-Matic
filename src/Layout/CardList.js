@@ -45,8 +45,11 @@ export default function CardList(){
 
             {" "}
 
-
-            <button type="button" class="btn btn-danger float-right" onClick={() =>{DeleteDeckHandler(id)}}>
+            <button 
+            type="button"
+             class="btn btn-danger float-right"
+            //    onClick={() => {DeleteDeckHandler(id)}} 
+              >
             <span className="oi oi-trash"></span>
             {" "} Delete
             </button>
