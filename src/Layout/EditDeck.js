@@ -21,7 +21,7 @@ export default function EditDeck(){
         setDescription(response.description)
     }
     loadDeck()
-    }, [])
+    }, [deckId])
 
     // Submit Handler
     const HandleSubmit = (event) => {
