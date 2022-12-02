@@ -22,7 +22,7 @@ export default function Deck(params){
             setDeckDescription(response.description);
         }
         allCards();
-    }, []);
+    }, [deckId]);
 
     // Delete Deck Handler
     const DeleteDeckHandler = (deckId) => {          

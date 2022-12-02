@@ -9,7 +9,7 @@ export default function EditCard(){
     const [back, setBack] = useState("");
     const [deckName, setDeckName] = useState("")
 
-    let {deckId} = useParams()
+    let {deckId} = useParams()  // using let for this in order to convert string to number in submit handler
     const {cardId} = useParams()
     const history = useHistory()
 
@@ -44,7 +44,7 @@ export default function EditCard(){
     const HandleSubmit = (event) => {
         event.preventDefault();
         const id = +cardId
-        deckId = Number(deckId)
+        deckId = Number(deckId) // need to convert the string value to a number
         const updatedCard = {id, front, back, deckId}
         async function callUpdateCard(){
             try{
