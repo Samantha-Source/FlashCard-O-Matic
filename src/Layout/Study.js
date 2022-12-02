@@ -42,9 +42,10 @@ export default function Study(params){
         setCurrentId(currentId + 1)
         setFront(false)
         if(currentId === theCards.length -1){
-            if(window.confirm("Do you want to restart?")){
+            if(window.confirm(`Restart cards? \n \n Click 'cancel' to return to the home page.`)){
+                window.location.reload(false);
+            } else {
                 history.push("/")
-               
             }
         }
     }
