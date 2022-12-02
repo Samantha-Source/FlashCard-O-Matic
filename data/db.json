@@ -170,16 +170,16 @@
       "id": 28
     },
     {
-      "front": "front3",
-      "back": "back3",
-      "deckId": 3,
-      "id": 29
-    },
-    {
       "id": 30,
       "front": "Front3",
       "back": "back3",
       "deckId": 4
+    },
+    {
+      "front": "card3",
+      "back": "back3",
+      "deckId": 3,
+      "id": 31
     }
   ]
 }

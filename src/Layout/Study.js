@@ -1,26 +1,21 @@
 import React from "react";
-import { Link, useRouteMatch, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { readDeck } from "../utils/api";
 import { useHistory } from "react-router-dom";
 
 
 
+
 export default function Study(params){
     const [cards, setCards] = useState([]);
     const [deckName, setDeckName] = useState("");
-    const [front, setFront] = useState(true);
-    const [currentIndex, setCurrentIndex] = useState(0)
-    const [display, setDisplay] = useState();
-    // const [cardId, setCardId] = useState()
-    
-    const {deckId} = useParams();
-    const history = useHistory();
-    const {cardId} = useParams();
+    const [front, setFront] = useState(false);
+    const [currentId, setCurrentId] = useState(0)
 
-    console.log(`DECK ID ${deckId}`)
-    console.log(`CARD ID? ${cardId}`)
-    
+
+    const history = useHistory()
+    const {deckId} = useParams();
 
     // Read Deck
     useEffect(()=>{
@@ -31,29 +26,71 @@ export default function Study(params){
         }
         allCards()
     }, [])
-    
+  
 
+
+    // FlipClick Handler
+    const flipClick = (event) => {
+        const cardId = event.target.id
+        setCurrentId(parseInt(cardId))
+        console.log(currentId)
+        setFront(!front)
+    }
+
+    const nextClick = (event) => {
+        setCurrentId(currentId + 1)
+        setFront(false)
+    }
+
+    // const NextButton = (front) => {
+    //     if(front === false){
+    //     return(
+    //     // <React.Fragment>
+            
+    //     // </React.Fragment>
+    //     )
+        
+    //     }else{
+    //         return(
+    //             <React.Fragment></React.Fragment>
+    //         )
+    //     }
+    // }
+
+    // useEffect((front)=>{
+    //     async function NextButton(){
+    //         if(front === false){
+    //         return(
+    //         // <React.Fragment>
+    //             <button type="button" className="btn btn-primary" onClick={nextClick} >Next</button>
+    //         // </React.Fragment>
+    //         )
+            
+    //         }else{
+    //             return(
+    //                 <React.Fragment></React.Fragment>
+    //             )
+    //         }
+    //         NextButton()
+    //     }
+    // }, [front])
 
     //Map the cards
     const theCards = cards.map((card, index )=>(
         <section key={index} className="border rounded">
             <h5>Card {index+1} of {cards.length}</h5>
+           
             <p>Index: {index}</p>
-            <p>Front: {card.front}</p>
-            <p>Back: {card.back}</p>
-            <button type="button" className="btn btn-secondary">Flip</button> {" "}
-            <button type="button" className="btn btn-primary">Next</button>
+            <p>CardId: {card.id}</p>
+
+
+            {(front===false) && <p>Front: {card.front}</p>}
+            {front && <p>Back: {card.back}</p>}
+            <button type="button" className="btn btn-secondary m-2" id={index} onClick={flipClick}>Flip</button>
+            {front && <button type="button" className="btn btn-primary" id={index} onClick={nextClick} >Next</button>} 
+             {" "}   
         </section>
     ))
-
-    //OR MAP THEM LIKE THIS?
-    const eachCard = cards.map((card, index) =>(
-        {"index":index, "front":card.front, "back":card.back }
-    ))
-
-
-
-
 
 
     //Show this if less than 3 cards
@@ -73,40 +110,28 @@ export default function Study(params){
         <p>You need at least 3 cards to study.  There are {cards.length} cards in this deck.</p>
         <button type="button" className="btn btn-primary" onClick={(()=>{history.push(`/decks/${deckId}/cards/new`)})}>
             <span className="oi oi-plus"></span>
-            {/* <Link to={`/decks/${deckId}/cards/new`}
-            Add Cards></Link> */}
             {" "}Add Cards
         </button>
         </React.Fragment>
         )
+    } else {
+        return (
+            <React.Fragment>
+                {/* BREADCRUMB HEADER BAR */}
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                        <li className="breadcrumb-item"><Link to={`/decks/${deckId}`}>{deckName}</Link></li>
+                        <li className="breadcrumb-item active" aria-current="page">Study</li>
+                    </ol>
+                </nav>
+                <h3>{deckName}: Study</h3>
+                
+                
+                <p>STUDY CARDS HERE</p>
+                <div>{theCards[currentId]}</div>
+            </React.Fragment>
+        )
     }
     
-
-
- 
-
-    
-    return(
-        <React.Fragment>
-            {/* BREADCRUMB NAV BAR */}
-        <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
-                <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                <li className="breadcrumb-item"><Link to={`/decks/${deckId}`}>{deckName}</Link></li>
-                <li className="breadcrumb-item active" aria-current="page">Study</li>
-            </ol>
-        </nav>
-        <h3>{deckName}: Study</h3>
-
-
-        <div>
-            {display}
-        </div>
-        {/* THE CARDS  */}
-        {/* <ul>
-            {theCards}
-        </ul> */}
-
-        </React.Fragment>
-    )
 }
