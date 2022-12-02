@@ -1,20 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { readCard, readDeck, updateCard } from "../utils/api";
-import { useHistory } from "react-router-dom";
 
-
+// Edit card Page
 export default function EditCard(){
+    const [front, setFront] = useState("");
+    const [back, setBack] = useState("");
+    const [deckName, setDeckName] = useState("")
+
     let {deckId} = useParams()
     const {cardId} = useParams()
     const history = useHistory()
 
-    const [front, setFront] = useState("");
-    const [back, setBack] = useState("");
-    const [deckName, setDeckName] = useState("")
+
     const [importedCardId, setImportedCardId] = useState()
    
     //change handlers for input fields
@@ -41,12 +39,12 @@ export default function EditCard(){
         loadCard()
     }, [])
 
+    //Submit handler
     const HandleSubmit = (event) => {
         event.preventDefault();
         const id = +cardId
         deckId = Number(deckId)
         const updatedCard = {id, front, back, deckId}
-        event.preventDefault()
         async function callUpdateCard(){
             try{
             const response = await updateCard(updatedCard);
@@ -66,7 +64,7 @@ export default function EditCard(){
 
 return(
     <React.Fragment>
-        {/* BREADCRUMB NAV BAR */}
+    {/* BREADCRUMB NAV BAR */}
     <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
             <li className="breadcrumb-item"><Link to="/">Home</Link></li>
@@ -75,37 +73,37 @@ return(
         </ol>
     </nav>
 
+    {/* THE FORM */}
+    <h4>{`Edit Card`}</h4>
+    <form onSubmit={HandleSubmit}>
+        <div className="form-group">
+        <label htmlFor="front">
+            Front
+            <br></br>
+            <textarea 
+            className="form-control"
+            id="front" 
+            name="front" 
+            placeholder="Front side of card"
+            value={front}
+            onChange={handleFrontChange}
+            />
+        </label>
+        </div>
 
-<h4>{`Edit Card`}</h4>
-<form onSubmit={HandleSubmit}>
-    <div className="form-group">
-    <label htmlFor="front">
-        Front
-        <br></br>
-        <textarea 
-        className="form-control"
-        id="front" 
-        name="front" 
-        placeholder="Front side of card"
-        value={front}
-        onChange={handleFrontChange}
-         />
-    </label>
-    </div>
-
-    <div>
-    <label htmlFor="back">
-        Back
-        <br></br>
-        <textarea
-        className="form-control"
-         id="back" 
-         name="back" 
-         placeholder="Back side of the card" 
-         value={back}
-         onChange={handleBackChange}
-         />
-    </label>
+        <div>
+        <label htmlFor="back">
+            Back
+            <br></br>
+            <textarea
+            className="form-control"
+            id="back" 
+            name="back" 
+            placeholder="Back side of the card" 
+            value={back}
+            onChange={handleBackChange}
+            />
+        </label>
 
     <br></br>
 

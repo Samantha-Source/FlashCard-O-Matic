@@ -1,30 +1,23 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 import { createCard, readDeck } from "../utils/api";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
 
 
-
+// Add Card page
 export default function AddCard(){
-    const [deckName, setDeckName] = useState()
-    const [returnedDeckId, setReturnedDeckId] = useState() //number
+    const [deckName, setDeckName] = useState();
+    const [returnedDeckId, setReturnedDeckId] = useState();
     const [front, setFront] = useState("");
-    const [back, setBack] = useState("")
+    const [back, setBack] = useState("");
 
+    const {deckId} = useParams();
 
-    //deckId & returnedDeckId give same value but different data types
-    const {deckId} = useParams() //string
-    const history = useHistory()
-
-
-const handleFrontChange = (event) => setFront(event.target.value)
-const handleBackChange = (event) => setBack(event.target.value)
+    // Change handlers for input fields
+    const handleFrontChange = (event) => setFront(event.target.value);
+    const handleBackChange = (event) => setBack(event.target.value);
     
 
-
+    //Read Deck
     useEffect(() => {
         async function loadDeck(){
         const response = await readDeck(deckId);
@@ -34,9 +27,9 @@ const handleBackChange = (event) => setBack(event.target.value)
     loadDeck()
     }, [])
 
+    // Form Submit Handler
     const HandleSubmit = (event) => {
         event.preventDefault();
-        console.log(event)
         const card = {front, back}
         const deckId = returnedDeckId
         
@@ -64,7 +57,6 @@ const handleBackChange = (event) => setBack(event.target.value)
                     <li className="breadcrumb-item active" aria-current="page">Add Card</li>
                 </ol>
             </nav>
-
 
         <h4>{`${deckName}: Add Card`}</h4>
        

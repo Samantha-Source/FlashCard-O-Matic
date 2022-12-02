@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Link, NavLink, useRouteMatch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Header from "./Header";
 import NotFound from "./NotFound";
@@ -11,7 +11,6 @@ import AddCard from "./AddCard";
 import EditCard from "./EditCard";
 
 function Layout() {
-  const {path, url} = useRouteMatch();
 
   return (
     <React.Fragment>

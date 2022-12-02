@@ -63,10 +63,10 @@
       "back": "test1edtEDIT"
     },
     {
-      "front": "front 1",
-      "back": "back 1",
-      "deckId": 3,
-      "id": 13
+      "id": 13,
+      "front": "fronting 11",
+      "back": "backing 11",
+      "deckId": 3
     },
     {
       "front": "front 2",
@@ -79,6 +79,24 @@
       "back": "back3",
       "deckId": 3,
       "id": 15
+    },
+    {
+      "front": "front4",
+      "back": "back4",
+      "deckId": 3,
+      "id": 16
+    },
+    {
+      "id": 17,
+      "front": "front5",
+      "back": "back5",
+      "deckId": 3
+    },
+    {
+      "id": 18,
+      "front": "front6",
+      "back": "back6",
+      "deckId": 3
     }
   ]
 }
