@@ -11,14 +11,9 @@
       "id": 2
     },
     {
-      "id": 3,
-      "name": "Test1",
-      "description": "TEst1"
-    },
-    {
-      "id": 4,
-      "name": "Test Deck(name)",
-      "description": "Test Deck (description)"
+      "name": "Test 1",
+      "description": "test 1 deck",
+      "id": 3
     }
   ],
   "cards": [
@@ -63,123 +58,27 @@
       "back": "test1"
     },
     {
-      "id": 10,
-      "front": "Front 1",
-      "back": "Back 1",
-      "deckId": 4
-    },
-    {
-      "id": 11,
-      "front": "Front 2",
-      "back": "Back 2",
-      "deckId": 4
-    },
-    {
       "id": 12,
       "front": "test1edtEDIT",
       "back": "test1edtEDIT"
     },
     {
-      "id": 13,
-      "front": "Card1EDT",
-      "back": "back1EDT",
-      "deckId": "3"
-    },
-    {
-      "id": 14,
-      "front": "card2EDT",
-      "back": "back2EDT",
-      "deckId": "3"
-    },
-    {
-      "id": 15,
-      "front": "card3EDT",
-      "back": "back3EDT",
-      "deckId": "3"
-    },
-    {
-      "id": 16,
-      "front": "card4EDT",
-      "back": "back4EDT",
-      "deckId": "3"
-    },
-    {
-      "id": 17,
-      "front": "cardEDT",
-      "back": "cardEDT",
-      "deckId": "3"
-    },
-    {
-      "id": 18,
-      "front": "card2edt",
-      "back": "card2edt",
-      "deckId": "3"
-    },
-    {
-      "id": 19,
-      "front": "cardEDT",
-      "back": "cardEDT",
-      "deckId": "3"
-    },
-    {
-      "id": 20,
-      "front": "cardEDT",
-      "back": "cardEDT",
-      "deckId": "3"
-    },
-    {
-      "id": 21,
-      "front": "cardedt",
-      "back": "cardedt",
-      "deckId": "3"
-    },
-    {
-      "id": 22,
-      "front": "card1EDT",
-      "back": "card1EDT",
-      "deckId": "3"
-    },
-    {
-      "id": 23,
-      "front": "card2EDT",
-      "back": "card2EDT",
-      "deckId": "3"
-    },
-    {
-      "id": 24,
-      "front": "cardEDT",
-      "back": "cardEDT",
-      "deckId": "3"
-    },
-    {
-      "id": 26,
-      "front": "testEDT",
-      "back": "testEDT",
-      "deckId": "3"
-    },
-    {
-      "id": 27,
-      "front": "cardEDITED",
-      "back": "cardERDITED",
-      "deckId": 3
-    },
-    {
-      "front": "card2",
-      "back": "card2",
+      "front": "front 1",
+      "back": "back 1",
       "deckId": 3,
-      "id": 28
+      "id": 13
     },
     {
-      "id": 30,
-      "front": "Front3",
-      "back": "back3",
-      "deckId": 4
+      "front": "front 2",
+      "back": "back 2",
+      "deckId": 3,
+      "id": 14
     },
     {
-      "front": "card3",
+      "front": "front3",
       "back": "back3",
       "deckId": 3,
-      "id": 31
+      "id": 15
     }
   ]
 }

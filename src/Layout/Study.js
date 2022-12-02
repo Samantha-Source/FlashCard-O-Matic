@@ -38,7 +38,6 @@ export default function Study(params){
 
     // NextClick Handler
     const nextClick = () => {
-        console.log(`CURRENT ${currentId}`)
         setCurrentId(currentId + 1)
         setFront(false)
         if(currentId === theCards.length -1){
@@ -55,14 +54,8 @@ export default function Study(params){
     const theCards = cards.map((card, index )=>(
         <section key={index} className="border rounded">
             <h5>Card {index+1} of {cards.length}</h5>
-           
-            {/* DON'T NEED THESE */}
-            <p>Index: {index}</p>
-            <p>CardId: {card.id}</p>
-
-
-            {(front===false) && <p>Front: {card.front}</p>}
-            {front && <p>Back: {card.back}</p>}
+            {(front===false) && <p>{card.front}</p>}
+            {front && <p>{card.back}</p>}
             <button type="button" className="btn btn-secondary m-2" id={index} onClick={flipClick}>Flip</button>
             {front && <button type="button" className="btn btn-primary" id={index} onClick={nextClick} >Next</button>} 
              {" "}   
@@ -103,10 +96,8 @@ export default function Study(params){
                     </ol>
                 </nav>
                 <h3>{deckName}: Study</h3>
-                
-                {/* DON'T NEED THIS LINE */}
-                <p>STUDY CARDS HERE</p>
-                <div>{theCards[currentId]}</div>
+ 
+                <div className="text-center">{theCards[currentId]}</div>
             </React.Fragment>
         )
     }
