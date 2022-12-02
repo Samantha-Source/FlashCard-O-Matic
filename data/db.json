@@ -11,9 +11,9 @@
       "id": 2
     },
     {
+      "id": 3,
       "name": "Test 1",
-      "description": "test 1 deck",
-      "id": 3
+      "description": "test 1 description"
     }
   ],
   "cards": [
@@ -81,21 +81,15 @@
       "id": 15
     },
     {
+      "id": 16,
       "front": "front4",
       "back": "back4",
-      "deckId": 3,
-      "id": 16
+      "deckId": 3
     },
     {
       "id": 17,
       "front": "front5",
       "back": "back5",
-      "deckId": 3
-    },
-    {
-      "id": 18,
-      "front": "front6",
-      "back": "back6",
       "deckId": 3
     }
   ]

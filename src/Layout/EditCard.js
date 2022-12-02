@@ -75,6 +75,7 @@ return(
 
     {/* THE FORM */}
     <h4>{`Edit Card`}</h4>
+    
     <form onSubmit={HandleSubmit}>
         <div className="form-group">
         <label htmlFor="front">
