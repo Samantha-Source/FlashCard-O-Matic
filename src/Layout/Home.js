@@ -1,14 +1,11 @@
-import React, {useState} from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import CardList from "./CardList";
 
 
 
-
-export default function Home(){
-
-
-
+//Base home page
+export default function Home() {
     return(
         <React.Fragment>
             <Link to="/decks/new">
@@ -16,7 +13,7 @@ export default function Home(){
                 + Create Deck</button>
             </Link>
             <p>{" "}</p>
-        <CardList />
+            <CardList />
         </React.Fragment>
     )
 }

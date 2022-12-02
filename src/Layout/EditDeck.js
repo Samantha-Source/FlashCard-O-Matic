@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { readDeck, updateDeck } from "../utils/api";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 
+// Edit Deck Page
 export default function EditDeck(){
     const {deckId} = useParams();
     const [name, setName] = useState("");
-    const [description, setDescription] = useState("")
+    const [description, setDescription] = useState("");
 
     // Change handlers for input fields
     const handleNameChange = (event) => setName(event.target.value);
@@ -28,14 +26,14 @@ export default function EditDeck(){
     // Submit Handler
     const HandleSubmit = (event) => {
         event.preventDefault();
-        const id = deckId
+        const id = deckId;
         const updatedDeck = {id, name, description}
         async function callUpdateDeck(){
             const response = await updateDeck(updatedDeck);
-            setDescription(response.description)
-            setName(response.name)
+            setDescription(response.description);
+            setName(response.name);
         }
-        callUpdateDeck()
+        callUpdateDeck();
     }
 
 
@@ -43,7 +41,6 @@ export default function EditDeck(){
     return(
     
         <React.Fragment>
-        
         {/* BREADCRUMB NAV BAR */}
         <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
@@ -99,8 +96,8 @@ export default function EditDeck(){
                 <button
                 type="submit"
                 className="btn btn-primary">
-                    Submit
-                    </button>
+                Submit
+                </button>
             </div>
         </form>
 

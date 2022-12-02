@@ -1,41 +1,40 @@
-import React from "react";
-import { useState } from "react";
-import {BrowserRouter as Router, Route, Swtich, Link, NavLink} from "react-router-dom";
+import React, {useState} from "react";
+import { Link , useHistory } from "react-router-dom";
 import { createDeck } from "../utils/api";
-import { useHistory } from "react-router-dom";
 
-
+// Create deck page
 export default function CreateDeck () {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("")
+    
     const history = useHistory()
 
-const handleNameChange = (event) => setName(event.target.value)
-const handleDescriptionChange = (event) => setDescription(event.target.value)
+    // Change handlers for input fields
+    const handleNameChange = (event) => setName(event.target.value)
+    const handleDescriptionChange = (event) => setDescription(event.target.value)
 
-const HandleSubmit = (event) => {
-    event.preventDefault();
-    console.log(event)
-    const deck = {name, description}
-    
-    async function callCreateDeck(){
-        try{
-            const deckInfo = await createDeck(deck);
-            history.push(`/decks/${deckInfo.id}`)
-        }
-        catch (error) {
-            throw error
-        }
-    } 
-    callCreateDeck()
-}
-
-
+    // Submit Hanlder
+    const HandleSubmit = (event) => {
+        event.preventDefault();
+        const deck = {name, description}
+        
+        async function callCreateDeck(){
+            try{
+                const deckInfo = await createDeck(deck);
+                history.push(`/decks/${deckInfo.id}`)
+            }
+            catch (error) {
+                throw error
+            }
+        } 
+        callCreateDeck();
+    };
 
 
 
     return(
         <React.Fragment>
+            {/* BREADCRUMB HEADER */}
         <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
             <li className="breadcrumb-item"><Link to="/">Home</Link></li>
@@ -43,7 +42,7 @@ const HandleSubmit = (event) => {
         </ol>
         </nav>
 
-
+        {/* THE FORM */}
         <form onSubmit={HandleSubmit}>
             <label htmlFor="name">
                 Name

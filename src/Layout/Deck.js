@@ -1,12 +1,9 @@
-import React from "react";
-import { useParams, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, Link, useHistory } from "react-router-dom";
 import { deleteCard, deleteDeck, readDeck } from "../utils/api";
-import { listDecks } from "../utils/api";
-import { useHistory } from "react-router-dom";
 
 
-
+//View Deck Page
 export default function Deck(params){
     const [cards, setCards] = useState([]); 
     const [deckName, setDeckName] = useState("")
@@ -16,7 +13,7 @@ export default function Deck(params){
     const {deckId} = useParams();
 
     
-
+    // Read deck
     useEffect(()=>{
         async function allCards(){
             const response = await readDeck(`${deckId}`);
@@ -27,7 +24,7 @@ export default function Deck(params){
         allCards();
     }, []);
 
-
+    // Delete Deck Handler
     const DeleteDeckHandler = (deckId) => {          
         if(window.confirm("Delete this deck? \n \nYou will not be able to recover it.")) {
             deleteDeck(deckId);
@@ -36,6 +33,7 @@ export default function Deck(params){
         }
     }
 
+    // Delete Card Hanlder
     const DeleteCardHandler = (id) => {
         if(window.confirm("Delete this card? \n \n You will not be able to recover it.")) {
             deleteCard(id)
@@ -45,17 +43,13 @@ export default function Deck(params){
 
 
 
-    //SET THE CARD VIEWS FOR THE PAGE
+    //Set the formatting for each card
     const theCards = cards.map(({front, back, id, deckId}, index )=>(
         <section key={index} className="border rounded p-2">
             <div className="d-flex flex-row justify-content-between">
             <p>{front}</p>
             <p>{back}</p>
             </div>
-            {/* <p>id: {id}</p>
-            <p>deckId: {deckId}</p>
-            <p>deck Name:</p>
-            */}
 
             <Link to={`/decks/${deckId}/cards/${id}/edit`}>
                 <button type="button" className="btn btn-secondary">
@@ -64,7 +58,6 @@ export default function Deck(params){
                 </button>
                 </Link>
                 {" "}
-                {/* <Link to="/"> */}
                 <button type="button"
                  className="btn btn-danger float-right" 
                 onClick={() => {DeleteCardHandler(id)}}
@@ -76,11 +69,9 @@ export default function Deck(params){
     ))
     
 
-
-
     return(
-        <>
-        
+        <React.Fragment>
+            {/* BREADCRUMB HEADER */}
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><Link to="/">Home</Link></li>
@@ -132,7 +123,7 @@ export default function Deck(params){
             {theCards}
         </ul>
 
-        </>
+        </React.Fragment>
     )
 
 }

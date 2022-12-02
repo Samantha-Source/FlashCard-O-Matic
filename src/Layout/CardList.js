@@ -1,32 +1,30 @@
-import React from "react"
-import { listDecks } from "../utils/api"
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
+import { listDecks, deleteDeck } from "../utils/api";
 import { Link } from "react-router-dom";
-import { deleteDeck } from "../utils/api";
 
-
-export default function CardList(){
+// Card List for the HomePage
+export default function CardList() {
     const [deckList, setDeckList] = useState([]);
 
-  
-    useEffect(()=> {
-        async function allDecks(){
+    // List Decks
+    useEffect(() => {
+        async function allDecks() {
             const response = await listDecks();
-            setDeckList(response)
+            setDeckList(response);
         }
-        allDecks()
-    }, [])
+        allDecks();
+    }, []);
 
-
+    // Delete Deck Button Handler
     const DeleteDeckHandler = (id) => {          
         if(window.confirm("Delete this deck? \n \nYou will not be able to recover it.")) {
             deleteDeck(id);
             window.location.reload(false);         
-        }
-    }
+        };
+    };
 
 
-
+    // Map through deckList to create each card
     let listing = deckList.map(({name, description, cards, id}, index) => (
         <div className="border rounded m-2 p-2" key={index}>
             <p className="float-right text-muted">{cards.length} cards</p>
