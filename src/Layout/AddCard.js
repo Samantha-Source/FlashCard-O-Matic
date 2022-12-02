@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { createCard, readDeck } from "../utils/api";
+import CardForm from "./CardForm";
 
 
 // Add Card page
@@ -25,7 +26,7 @@ export default function AddCard(){
         setReturnedDeckId(response.id)
     }
     loadDeck()
-    }, [])
+    }, [deckId])
 
     // Form Submit Handler
     const HandleSubmit = (event) => {
@@ -61,7 +62,15 @@ export default function AddCard(){
         <h4>{`${deckName}: Add Card`}</h4>
        
         {/* THE FORM */}
-        <form onSubmit={HandleSubmit}>
+        <CardForm 
+        HandleSubmit={HandleSubmit}
+        handleFrontChange={handleFrontChange}
+        handleBackChange={handleBackChange}
+        deckId={deckId}
+        front={front}
+        back={back}
+        />
+        {/* <form onSubmit={HandleSubmit}>
             <div className="form-group">
             <label htmlFor="front">
                 Front
@@ -100,7 +109,7 @@ export default function AddCard(){
 
             <button type="submit" className="btn btn-primary">Save</button>
             </div>
-        </form>
+        </form> */}
         </React.Fragment>
     )
 }

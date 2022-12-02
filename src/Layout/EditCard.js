@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { readCard, readDeck, updateCard } from "../utils/api";
+import CardForm from "./CardForm";
 
 // Edit card Page
 export default function EditCard(){
@@ -75,8 +76,16 @@ return(
 
     {/* THE FORM */}
     <h4>{`Edit Card`}</h4>
-    
-    <form onSubmit={HandleSubmit}>
+
+    <CardForm 
+    HandleSubmit={HandleSubmit}
+    handleFrontChange={handleFrontChange}
+    handleBackChange={handleBackChange}
+    deckId={deckId}
+    front={front}
+    back={back}
+    />
+    {/* <form onSubmit={HandleSubmit}>
         <div className="form-group">
         <label htmlFor="front">
             Front
@@ -115,7 +124,7 @@ return(
 
     <button type="submit" className="btn btn-primary">Save</button>
     </div>
-</form>
+</form> */}
 </React.Fragment>
 )
 }
