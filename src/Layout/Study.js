@@ -13,9 +13,9 @@ export default function Study(params){
     const [front, setFront] = useState(false);
     const [currentId, setCurrentId] = useState(0)
 
-
     const history = useHistory()
     const {deckId} = useParams();
+
 
     // Read Deck
     useEffect(()=>{
@@ -28,58 +28,34 @@ export default function Study(params){
     }, [])
   
 
-
     // FlipClick Handler
     const flipClick = (event) => {
         const cardId = event.target.id
         setCurrentId(parseInt(cardId))
-        console.log(currentId)
         setFront(!front)
     }
 
-    const nextClick = (event) => {
+
+    // NextClick Handler
+    const nextClick = () => {
+        console.log(`CURRENT ${currentId}`)
         setCurrentId(currentId + 1)
         setFront(false)
+        if(currentId === theCards.length -1){
+            if(window.confirm("Do you want to restart?")){
+                history.push("/")
+               
+            }
+        }
     }
 
-    // const NextButton = (front) => {
-    //     if(front === false){
-    //     return(
-    //     // <React.Fragment>
-            
-    //     // </React.Fragment>
-    //     )
-        
-    //     }else{
-    //         return(
-    //             <React.Fragment></React.Fragment>
-    //         )
-    //     }
-    // }
-
-    // useEffect((front)=>{
-    //     async function NextButton(){
-    //         if(front === false){
-    //         return(
-    //         // <React.Fragment>
-    //             <button type="button" className="btn btn-primary" onClick={nextClick} >Next</button>
-    //         // </React.Fragment>
-    //         )
-            
-    //         }else{
-    //             return(
-    //                 <React.Fragment></React.Fragment>
-    //             )
-    //         }
-    //         NextButton()
-    //     }
-    // }, [front])
 
     //Map the cards
     const theCards = cards.map((card, index )=>(
         <section key={index} className="border rounded">
             <h5>Card {index+1} of {cards.length}</h5>
            
+            {/* DON'T NEED THESE */}
             <p>Index: {index}</p>
             <p>CardId: {card.id}</p>
 
@@ -127,7 +103,7 @@ export default function Study(params){
                 </nav>
                 <h3>{deckName}: Study</h3>
                 
-                
+                {/* DON'T NEED THIS LINE */}
                 <p>STUDY CARDS HERE</p>
                 <div>{theCards[currentId]}</div>
             </React.Fragment>
