@@ -1,11 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function CardForm({HandleSubmit, handleFrontChange, handleBackChange, front, back, deckId}){
-
-
-return(
-    <React.Fragment>
+export default function CardForm({HandleSubmit, handleFrontChange, handleBackChange, deckId, front, back}){
+    return(
     <form onSubmit={HandleSubmit}>
             <div className="form-group">
             <label htmlFor="front">
@@ -35,20 +32,16 @@ return(
                  onChange={handleBackChange}
                  />
             </label>
-            </div>
-            </form>
+
             <br></br>
 
             <Link to={`/decks/${deckId}`}><button type="button" className="btn btn-secondary">
-            Done</button></Link>
-
+                Done</button></Link>
+            
             {" "}
 
             <button type="submit" className="btn btn-primary">Save</button>
-            </React.Fragment>
-
-
-
-)
-
+            </div>
+        </form>
+    )
 }
