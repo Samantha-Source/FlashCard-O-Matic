@@ -9,7 +9,7 @@ export default function EditCard(){
     const [back, setBack] = useState("");
     const [deckName, setDeckName] = useState("")
 
-    let {deckId} = useParams()
+    let {deckId} = useParams()  // using let for this in order to convert string to number in submit handler
     const {cardId} = useParams()
     const history = useHistory()
 
@@ -44,7 +44,7 @@ export default function EditCard(){
     const HandleSubmit = (event) => {
         event.preventDefault();
         const id = +cardId
-        deckId = Number(deckId)
+        deckId = Number(deckId) // need to convert the string value to a number
         const updatedCard = {id, front, back, deckId}
         async function callUpdateCard(){
             try{
@@ -74,9 +74,10 @@ return(
         </ol>
     </nav>
 
-    {/* THE FORM */}
+    
     <h4>{`Edit Card`}</h4>
-
+    
+    {/* THE FORM */}
     <CardForm 
     HandleSubmit={HandleSubmit}
     handleFrontChange={handleFrontChange}
@@ -84,47 +85,9 @@ return(
     deckId={deckId}
     front={front}
     back={back}
+    cancel="Cancel"
+    save="Submit"
     />
-    {/* <form onSubmit={HandleSubmit}>
-        <div className="form-group">
-        <label htmlFor="front">
-            Front
-            <br></br>
-            <textarea 
-            className="form-control"
-            id="front" 
-            name="front" 
-            placeholder="Front side of card"
-            value={front}
-            onChange={handleFrontChange}
-            />
-        </label>
-        </div>
-
-        <div>
-        <label htmlFor="back">
-            Back
-            <br></br>
-            <textarea
-            className="form-control"
-            id="back" 
-            name="back" 
-            placeholder="Back side of the card" 
-            value={back}
-            onChange={handleBackChange}
-            />
-        </label>
-
-    <br></br>
-
-    <Link to={`/decks/${deckId}`}><button type="button" className="btn btn-secondary">
-        Cancel</button></Link>
-    
-    {" "}
-
-    <button type="submit" className="btn btn-primary">Save</button>
-    </div>
-</form> */}
 </React.Fragment>
 )
 }

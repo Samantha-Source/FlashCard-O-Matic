@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function CardForm({HandleSubmit, handleFrontChange, handleBackChange, deckId, front, back}){
+
+// Form for AddCard and EditCard
+export default function CardForm({HandleSubmit, handleFrontChange, handleBackChange, deckId, front, back, save, cancel}){
     return(
     <form onSubmit={HandleSubmit}>
             <div className="form-group">
@@ -36,11 +38,11 @@ export default function CardForm({HandleSubmit, handleFrontChange, handleBackCha
             <br></br>
 
             <Link to={`/decks/${deckId}`}><button type="button" className="btn btn-secondary">
-                Done</button></Link>
+                {cancel}</button></Link>
             
             {" "}
 
-            <button type="submit" className="btn btn-primary">Save</button>
+            <button type="submit" className="btn btn-primary">{save}</button>
             </div>
         </form>
     )
