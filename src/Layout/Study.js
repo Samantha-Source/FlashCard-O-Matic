@@ -25,7 +25,7 @@ export default function Study(params){
             setDeckName(response.name)
         }
         allCards()
-    }, [])
+    }, [deckId])
   
 
     // FlipClick Handler

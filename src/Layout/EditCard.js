@@ -38,7 +38,7 @@ export default function EditCard(){
             setImportedCardId(response.cardId)
         }
         loadCard()
-    }, [])
+    }, [cardId])
 
     //Submit handler
     const HandleSubmit = (event) => {
