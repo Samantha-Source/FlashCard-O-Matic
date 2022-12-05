@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { readDeck, updateDeck } from "../utils/api";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
+
 
 // Edit Deck Page
 export default function EditDeck(){
     const {deckId} = useParams();
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
+
+    const history = useHistory()
 
     // Change handlers for input fields
     const handleNameChange = (event) => setName(event.target.value);
@@ -32,6 +35,7 @@ export default function EditDeck(){
             const response = await updateDeck(updatedDeck);
             setDescription(response.description);
             setName(response.name);
+            history.push(`/decks/${deckId}`)
         }
         callUpdateDeck();
     }

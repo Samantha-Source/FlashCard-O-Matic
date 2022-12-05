@@ -12,8 +12,8 @@
     },
     {
       "id": 3,
-      "name": "Test 1",
-      "description": "test 1 description"
+      "name": "Test1ed",
+      "description": "Test1ed"
     }
   ],
   "cards": [
@@ -48,55 +48,17 @@
       "id": 5
     },
     {
-      "id": 7,
-      "front": "Front3EDT",
-      "back": "Back3EDT"
+      "cards": [],
+      "front": "b",
+      "back": "b",
+      "deckId": 1,
+      "id": 7
     },
     {
-      "id": 9,
-      "front": "test1",
-      "back": "test1"
-    },
-    {
-      "id": 12,
-      "front": "test1edtEDIT",
-      "back": "test1edtEDIT"
-    },
-    {
-      "id": 13,
-      "front": "fronting 11",
-      "back": "backing 11",
-      "deckId": 3
-    },
-    {
-      "front": "front 2",
-      "back": "back 2",
+      "front": "front1",
+      "back": "back1",
       "deckId": 3,
-      "id": 14
-    },
-    {
-      "front": "front3",
-      "back": "back3",
-      "deckId": 3,
-      "id": 15
-    },
-    {
-      "id": 16,
-      "front": "front4",
-      "back": "back4",
-      "deckId": 3
-    },
-    {
-      "id": 17,
-      "front": "front#",
-      "back": "back5",
-      "deckId": "3"
-    },
-    {
-      "id": 18,
-      "front": "front###",
-      "back": "back5",
-      "deckId": 3
+      "id": 8
     }
   ]
 }
