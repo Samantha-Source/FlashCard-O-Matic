@@ -27,7 +27,7 @@ export default function EditCard(){
         setDeckName(response.name);
     }
     loadDeck()
-    }, [])
+    }, [deckId])
 
     //load the current card data
     useEffect(()=>{
