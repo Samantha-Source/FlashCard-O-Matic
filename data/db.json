@@ -12,8 +12,8 @@
     },
     {
       "id": 3,
-      "name": "Test1ed",
-      "description": "Test1ed"
+      "name": "Test1",
+      "description": "Test1"
     }
   ],
   "cards": [
@@ -55,10 +55,10 @@
       "id": 7
     },
     {
-      "front": "front1",
-      "back": "back1",
-      "deckId": 3,
-      "id": 8
+      "id": 8,
+      "front": "front1ed",
+      "back": "back1ed",
+      "deckId": 3
     }
   ]
 }
