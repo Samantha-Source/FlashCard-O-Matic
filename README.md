@@ -1,6 +1,6 @@
-# Project-_Flashcards-_Qualified-Samantha_Brown-Solution
- 
-#Flashcard-O-Matic
-##Thinkful capstone project
+# FlashCard-O-Matic
+## Study tool application
+### By Samantha Brown
 
-By Samantha Brown
+Allows user to create, edit, view, and delete customized decks of flash cards.
+
